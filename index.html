@@ -1,481 +1,464 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXUS 4D | Future Fitness</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Habibi247</title>
+
 <style>
 :root{
-  --cyan:#00f5ff;
-  --purple:#a855f7;
-  --pink:#ff3cac;
-  --bg:#050611;
-  --panel:#101326;
-  --muted:#9ba3c2;
+  --habibi-burgundy:#830010;
+  --habibi-burgundy-dark:#5f000b;
+  --habibi-border:#dedede;
+  --habibi-page:#f4f4f4;
+  --habibi-text:#292929;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
 body{
-  background:var(--bg);color:#fff;
-  font-family:Inter,sans-serif;overflow-x:hidden;
+  background:var(--habibi-page);
+  color:var(--habibi-text);
 }
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background:
-    linear-gradient(#00f5ff08 1px,transparent 1px),
-    linear-gradient(90deg,#00f5ff08 1px,transparent 1px);
-  background-size:55px 55px;
-  mask-image:linear-gradient(to bottom,black,transparent 90%);
+
+.container{
+  display:flex;
+  flex-direction:row-reverse;
+  min-height:100vh;
 }
-a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
-.nav{
-  height:76px;position:fixed;top:0;width:100%;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 7%;background:#050611d9;backdrop-filter:blur(18px);
-  border-bottom:1px solid #00f5ff25;
+
+.demo{
+  width:70%;
+  background:#111;
+  position:relative;
 }
-.logo{font:900 22px Orbitron,sans-serif;letter-spacing:2px}
-.logo span{color:var(--cyan);text-shadow:0 0 15px var(--cyan)}
-.nav-links{display:flex;gap:28px;font-size:10px;font-weight:700;letter-spacing:1px}
-.nav-links a{color:#b8c0d9;transition:.3s}
-.nav-links a:hover{color:var(--cyan)}
-.nav-cta{
-  padding:12px 19px;background:linear-gradient(90deg,var(--cyan),var(--purple));
-  color:#050611;font-size:10px;font-weight:900;letter-spacing:1px;
+
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
 }
-.menu{display:none;background:none;border:0;color:white;font-size:25px}
-.hero{
-  min-height:800px;padding:150px 7% 100px;
-  display:grid;grid-template-columns:1fr 1fr;align-items:center;
-  gap:25px;position:relative;overflow:hidden;
+
+.right{
+  width:30%;
+  padding:30px 22px;
+  background:linear-gradient(180deg,#fff,#eeece8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-y:auto;
 }
-.hero:after{
-  content:"";position:absolute;width:600px;height:600px;border-radius:50%;
-  background:var(--purple);filter:blur(180px);opacity:.15;
-  right:-170px;top:100px;pointer-events:none;
+
+.box{
+  width:100%;
+  background:#fff;
+  border:1px solid var(--habibi-border);
+  border-radius:8px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 8px 28px rgba(48,46,42,.12);
 }
-.hero-copy{position:relative;z-index:2}
-.tag{
-  display:inline-flex;align-items:center;gap:10px;
-  color:var(--cyan);font:600 10px Orbitron,sans-serif;letter-spacing:3px;
+
+.badge{
+  display:inline-block;
+  background:var(--habibi-burgundy);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
+  margin-bottom:16px;
 }
-.tag:before{content:"";width:30px;height:1px;background:var(--cyan)}
-.hero h1{
-  font:900 clamp(55px,8vw,108px)/.98 Orbitron,sans-serif;
-  letter-spacing:-5px;margin:27px 0;
+
+h1{
+  font-size:34px;
+  color:var(--habibi-burgundy-dark);
+  margin-bottom:10px;
+  text-transform:uppercase;
 }
-.hero h1 span{
-  display:block;color:transparent;
-  -webkit-text-stroke:1.5px var(--cyan);
-  text-shadow:0 0 35px #00f5ff35;
+
+.sub{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:22px;
+  color:#000;
 }
-.hero-copy p{max-width:460px;color:var(--muted);font-size:14px;line-height:1.9}
-.hero-actions{display:flex;gap:14px;margin-top:35px;flex-wrap:wrap}
-.btn{
-  display:inline-block;padding:16px 24px;font-size:10px;
-  font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
-  transition:.3s;border:1px solid transparent;
+
+.features{
+  display:grid;
+  gap:12px;
+  margin:22px 0;
 }
-.btn-primary{background:var(--cyan);color:#050611;box-shadow:0 0 25px #00f5ff45}
-.btn-outline{border-color:#00f5ff70;color:var(--cyan)}
-.btn:hover{transform:translateY(-5px);box-shadow:0 0 30px #00f5ff50}
-.scene{
-  height:530px;position:relative;display:flex;
-  align-items:center;justify-content:center;perspective:1000px;
+
+.feature{
+  background:linear-gradient(90deg,#f7f6f3,#eeece8);
+  border:1px solid var(--habibi-border);
+  padding:14px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:700;
 }
-.portal{
-  position:absolute;width:430px;height:430px;border-radius:50%;
-  border:2px solid #00f5ffb0;
-  box-shadow:0 0 25px #00f5ff55,inset 0 0 35px #00f5ff30;
-  transform:rotateX(65deg) rotateZ(-20deg);
-  animation:portalSpin 13s linear infinite;
+
+.feature span{
+  color:var(--habibi-burgundy-dark);
 }
-.portal.two{
-  width:350px;height:350px;border-color:#a855f7;
-  box-shadow:0 0 25px #a855f755,inset 0 0 35px #a855f730;
-  transform:rotateX(65deg) rotateZ(30deg);
-  animation:portalReverse 10s linear infinite;
+
+/* Signup Button */
+.signup-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:9px 16px;
+  background:var(--habibi-burgundy);
+  color:#fff;
+  text-decoration:none;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:800;
+  border:1px solid var(--habibi-burgundy-dark);
+  transition:.3s;
 }
-.portal.three{
-  width:500px;height:500px;border:1px dashed #ff3cac;
-  transform:rotateX(65deg);
-  animation:portalSpin 25s linear infinite;
+
+.signup-btn:hover{
+  background:var(--habibi-burgundy-dark);
+  transform:scale(1.03);
 }
-@keyframes portalSpin{to{transform:rotateX(65deg) rotateZ(340deg)}}
-@keyframes portalReverse{to{transform:rotateX(65deg) rotateZ(-330deg)}}
-.core-wrap{
-  width:190px;height:190px;position:relative;
-  transform-style:preserve-3d;animation:float 4s ease-in-out infinite;
+
+.website-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-size:14px;
+  font-weight:bold;
 }
-@keyframes float{50%{transform:translateY(-18px) rotateY(15deg)}}
-.core{
-  position:absolute;inset:0;
-  background:linear-gradient(135deg,#00f5ff,#5434b8 50%,#ff3cac);
-  clip-path:polygon(50% 0%,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%);
-  box-shadow:0 0 50px var(--cyan);
-  animation:coreSpin 9s linear infinite;
+
+.website-row a{
+  text-decoration:none;
 }
-@keyframes coreSpin{to{transform:rotateY(360deg) rotateX(360deg)}}
-.core:after{
-  content:"";position:absolute;inset:15px;
-  background:linear-gradient(135deg,#11162c,#080a19);
-  clip-path:polygon(50% 0%,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%);
+
+.website{
+  color:var(--habibi-burgundy-dark);
 }
-.core-light{
-  position:absolute;inset:35px;border-radius:50%;
-  background:radial-gradient(circle,#fff 0%,var(--cyan) 15%,#a855f7 40%,transparent 72%);
-  filter:blur(9px);z-index:2;animation:lightPulse 3s ease-in-out infinite;
+
+.whatsapp-small{
+  color:#168a45;
 }
-@keyframes lightPulse{50%{transform:scale(1.3);opacity:.65}}
-.orbit-dot{
-  position:absolute;width:13px;height:13px;border-radius:50%;
-  background:var(--cyan);box-shadow:0 0 25px var(--cyan);
-  top:50%;left:50%;animation:orbitDot 7s linear infinite;
-}
-@keyframes orbitDot{
-  from{transform:rotate(0deg) translateX(225px)}
-  to{transform:rotate(360deg) translateX(225px)}
-}
-.scene-label{
-  position:absolute;bottom:20px;right:0;color:var(--cyan);
-  font:600 9px Orbitron,sans-serif;letter-spacing:3px;
-}
-.hero-index{
-  position:absolute;left:7%;bottom:35px;color:#ffffff35;
-  font:700 11px Orbitron,sans-serif;letter-spacing:3px;
-}
-.stats{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  padding:32px 7%;border-top:1px solid #ffffff18;
-  border-bottom:1px solid #ffffff18;background:#0b0d1c;
-}
-.stat{text-align:center;border-right:1px solid #ffffff18}
-.stat:last-child{border:0}
-.stat strong{display:block;font:800 35px Orbitron,sans-serif;color:var(--cyan)}
-.stat span{font-size:9px;color:var(--muted);letter-spacing:2px}
-section.content{padding:105px 7%}
-.heading{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:45px}
-.heading h2{font:800 clamp(35px,5.5vw,65px)/1.05 Orbitron,sans-serif}
-.heading h2 span{color:var(--cyan)}
-.heading p{max-width:320px;font-size:12px;color:var(--muted);line-height:1.8}
-.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.program{
-  min-height:280px;padding:25px;position:relative;overflow:hidden;
-  background:linear-gradient(145deg,#151a31,#0b0d1b);
-  border:1px solid #ffffff16;transition:.35s;
-}
-.program:hover{transform:translateY(-8px);border-color:var(--cyan);box-shadow:0 10px 40px #00f5ff14}
-.program .num{font:600 10px Orbitron,sans-serif;color:var(--cyan)}
-.program .symbol{
-  position:absolute;right:20px;top:25px;font:900 85px Orbitron,sans-serif;
-  color:#00f5ff18;transition:.4s;
-}
-.program:hover .symbol{color:#00f5ff50;transform:rotate(15deg) scale(1.15)}
-.program h3{position:absolute;bottom:65px;left:25px;font:700 20px Orbitron,sans-serif}
-.program p{position:absolute;bottom:27px;left:25px;font-size:11px;color:var(--muted)}
-.about{
-  display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center;
-  background:#0b0d1b;
-}
-.about-art{
-  height:440px;position:relative;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;background:radial-gradient(circle,#182a46,#090b18 65%);
-  border:1px solid #00f5ff30;
-}
-.about-art:before,.about-art:after{
-  content:"";position:absolute;width:290px;height:290px;
-  border:1px solid var(--cyan);border-radius:50%;
-  box-shadow:0 0 30px #00f5ff40;animation:portalSpin 15s linear infinite;
-}
-.about-art:after{width:370px;height:370px;border-color:var(--pink);animation:portalReverse 18s linear infinite}
-.about-art strong{font:900 65px Orbitron,sans-serif;color:white;z-index:2;text-shadow:0 0 25px var(--cyan)}
-.about-art small{position:absolute;bottom:20px;left:20px;color:var(--cyan);font:9px Orbitron,sans-serif;letter-spacing:3px}
-.about-copy h2{font:800 clamp(38px,5vw,65px)/1.1 Orbitron,sans-serif;margin:20px 0}
-.about-copy h2 span{color:var(--cyan)}
-.about-copy p{font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:16px}
-.features{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin:25px 0}
-.features div{font-size:11px;color:#d4d9ef}
-.features b{color:var(--cyan);margin-right:8px}
-.pricing{background:#0b0d1b}
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.price-card{
-  padding:32px 26px;background:linear-gradient(145deg,#171b32,#0b0d1b);
-  border:1px solid #ffffff18;
-}
-.price-card.featured{border-color:var(--cyan);box-shadow:0 0 35px #00f5ff16;transform:translateY(-12px)}
-.price-card .plan{font:600 9px Orbitron,sans-serif;letter-spacing:2px;color:var(--cyan)}
-.price-card h3{font:700 22px Orbitron,sans-serif;margin:20px 0}
-.amount{font:800 45px Orbitron,sans-serif}
-.amount small{font:400 11px Inter,sans-serif;color:var(--muted)}
-.price-card ul{list-style:none;margin:25px 0}
-.price-card li{font-size:11px;color:#aab1ca;padding:12px 0;border-bottom:1px solid #ffffff13}
-.price-card li:before{content:"✦";color:var(--cyan);margin-right:10px}
-.price-card .btn{width:100%;text-align:center}
-.bmi-area{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
-.bmi-area h2{font:800 clamp(42px,6vw,70px)/1.05 Orbitron,sans-serif}
-.bmi-area h2 span{color:var(--cyan)}
-.bmi-area p{font-size:13px;color:var(--muted);line-height:1.9;margin-top:20px}
-.calculator{padding:32px;background:#11152a;border:1px solid #00f5ff45}
-.calculator h3{font:700 20px Orbitron,sans-serif;margin-bottom:20px}
-.calculator label{display:block;font-size:10px;color:var(--muted);margin:16px 0 8px;letter-spacing:1px}
-.calculator input{
-  width:100%;padding:14px;background:#080b18;color:white;
-  border:1px solid #ffffff25;outline:none;
-}
-.calculator input:focus{border-color:var(--cyan)}
-.calculator button{width:100%;margin-top:20px}
-#result{min-height:24px;margin-top:18px;color:var(--cyan);font-size:12px;font-weight:700}
+
 .cta{
-  padding:100px 7%;text-align:center;
-  background:radial-gradient(ellipse at center,#17254a,#080a17 65%);
-  border-top:1px solid #00f5ff25;border-bottom:1px solid #00f5ff25;
+  display:block;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  padding:17px;
+  border-radius:16px;
+  font-size:20px;
+  font-weight:900;
+  margin-top:22px;
+  box-shadow:0 8px 18px rgba(37,211,102,.35);
+  transition:.3s;
 }
-.cta h2{font:900 clamp(42px,8vw,90px)/1.05 Orbitron,sans-serif}
-.cta h2 span{color:var(--cyan)}
-.cta p{max-width:450px;margin:20px auto 30px;color:var(--muted);font-size:13px;line-height:1.8}
-footer{padding:45px 7% 22px;background:#03040c}
-.footer-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
-.footer-top p{max-width:300px;color:#747b99;font-size:11px;line-height:1.8;margin-top:15px}
-.footer-links{display:flex;gap:25px;flex-wrap:wrap;font-size:10px;color:#9ba3c2}
-.footer-links a:hover{color:var(--cyan)}
-.copyright{border-top:1px solid #ffffff15;margin-top:35px;padding-top:20px;color:#646b83;font-size:9px;letter-spacing:1px}
-.reveal{opacity:0;transform:translateY(25px);transition:.8s}
-.reveal.show{opacity:1;transform:translateY(0)}
-@media(max-width:850px){
- .nav{padding:0 6%}
- .menu{display:block}
- .nav-cta{display:none}
- .nav-links{display:none;position:absolute;top:76px;left:0;width:100%;padding:25px 7%;background:#080a18;flex-direction:column;gap:22px}
- .nav-links.open{display:flex}
- .hero{grid-template-columns:1fr;padding:130px 6% 80px;gap:0}
- .scene{height:430px}
- .portal{width:340px;height:340px}
- .portal.two{width:270px;height:270px}
- .portal.three{width:390px;height:390px}
- .stats{grid-template-columns:1fr 1fr;gap:25px}
- .stat{border:0}
- section.content{padding:75px 6%}
- .heading{display:block}
- .heading p{margin-top:17px}
- .program-grid,.price-grid{grid-template-columns:1fr}
- .about,.bmi-area{grid-template-columns:1fr;gap:35px}
- .price-card.featured{transform:none}
+
+.cta:hover{
+  transform:scale(1.03);
+  background:#1ebe5d;
 }
-@media(max-width:450px){
- .hero h1{font-size:54px;letter-spacing:-3px}
- .scene{height:350px}
- .portal{width:270px;height:270px}
- .portal.two{width:210px;height:210px}
- .portal.three{width:310px;height:310px}
- .core-wrap{transform:scale(.8)}
- .features{grid-template-columns:1fr}
- .stats{padding:25px 5%}
- .stat strong{font-size:28px}
+
+/* Floating Signup Button */
+.floating-signup{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+  background:var(--habibi-burgundy);
+  color:#fff;
+  padding:12px 24px;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:900;
+  border:3px solid #fff;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(32,127,104,.35);
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
 }
-</style>
-</head>
-<body>
 
-<header class="nav">
-  <a class="logo" href="#">NEXUS<span>4D.</span></a>
-  <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
-  <nav class="nav-links" id="links">
-    <a href="#programs">Programs</a>
-    <a href="#about">Experience</a>
-    <a href="#membership">Membership</a>
-    <a href="#bmi">BMI Scan</a>
-  </nav>
-  <a href="#membership" class="nav-cta">Enter the future ↗</a>
-</header>
+.floating-signup:hover{
+  transform:translateX(-50%) scale(1.08);
+  background:var(--habibi-burgundy-dark);
+  box-shadow:0 12px 25px rgba(32,127,104,.45);
+}
 
-<main>
-<section class="hero">
-  <div class="hero-copy">
-    <div class="tag">THE NEXT DIMENSION OF FITNESS</div>
-    <h1>TRAIN IN <span>4 DIMENSIONS.</span></h1>
-    <p>Step into a new era of performance. Experience next-generation training, futuristic technology and an atmosphere built to push human potential beyond limits.</p>
-    <div class="hero-actions">
-      <a href="#membership" class="btn btn-primary">Enter the nexus ↗</a>
-      <a href="#programs" class="btn btn-outline">Explore programs</a>
-    </div>
-  </div>
-  <div class="scene">
-    <div class="portal three"></div>
-    <div class="portal"></div>
-    <div class="portal two"></div>
-    <div class="orbit-dot"></div>
-    <div class="core-wrap">
-      <div class="core"></div>
-      <div class="core-light"></div>
-    </div>
-    <div class="scene-label">ENERGY CORE / 04.0</div>
-  </div>
-  <div class="hero-index">NEXUS SYSTEM // 001</div>
-</section>
+.trust{
+  margin-top:16px;
+  color:#555;
+  font-size:14px;
+  line-height:1.5;
+}
 
-<div class="stats">
-  <div class="stat"><strong>4D</strong><span>Training experience</span></div>
-  <div class="stat"><strong>24/7</strong><span>Access options</span></div>
-  <div class="stat"><strong>30+</strong><span>Weekly sessions</span></div>
-  <div class="stat"><strong>100%</strong><span>Future focused</span></div>
-</div>
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#666;
+  line-height:1.5;
+}
 
-<section class="content" id="programs">
-  <div class="heading reveal">
-    <h2>UNLOCK YOUR <span>DIMENSION.</span></h2>
-    <p>Choose your mission. Every training zone is engineered to develop a different part of your performance.</p>
-  </div>
-  <div class="program-grid">
-    <article class="program reveal"><span class="num">ZONE / 01</span><span class="symbol">◈</span><h3>POWER MATRIX</h3><p>Strength training and progressive overload.</p></article>
-    <article class="program reveal"><span class="num">ZONE / 02</span><span class="symbol">⌁</span><h3>VELOCITY LAB</h3><p>Speed, agility and high-intensity training.</p></article>
-    <article class="program reveal"><span class="num">ZONE / 03</span><span class="symbol">◎</span><h3>CORE DIMENSION</h3><p>Balance, stability and body control.</p></article>
-    <article class="program reveal"><span class="num">ZONE / 04</span><span class="symbol">✧</span><h3>ENDURANCE X</h3><p>Cardio conditioning and stamina.</p></article>
-    <article class="program reveal"><span class="num">ZONE / 05</span><span class="symbol">⬡</span><h3>PERSONAL AI</h3><p>Individual coaching and training plans.</p></article>
-    <article class="program reveal"><span class="num">ZONE / 06</span><span class="symbol">⟡</span><h3>RECOVERY POD</h3><p>Mobility and recovery sessions.</p></article>
-  </div>
-</section>
+.bonus-popup{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(0,0,0,.78);
+}
 
-<section class="content about" id="about">
-  <div class="about-art reveal">
-    <div></div>
-    <strong>4D CORE</strong>
-    <small>HUMAN PERFORMANCE REDEFINED</small>
-  </div>
-  <div class="about-copy reveal">
-    <div class="tag">BEYOND THE ORDINARY</div>
-    <h2>YOUR BODY.<br><span>NEW LIMITS.</span></h2>
-    <p>NEXUS 4D combines intelligent training spaces, expert coaching and a high-energy environment to help you reach your next level.</p>
-    <p>From your first workout to your next personal record, every detail is designed around progress.</p>
-    <div class="features">
-      <div><b>✦</b> Advanced equipment</div>
-      <div><b>✦</b> Expert trainers</div>
-      <div><b>✦</b> Smart training plans</div>
-      <div><b>✦</b> Recovery facilities</div>
-    </div>
-    <a href="#membership" class="btn btn-primary">Discover membership ↗</a>
-  </div>
-</section>
+.bonus-popup[hidden]{
+  display:none;
+}
 
-<section class="content pricing" id="membership">
-  <div class="heading reveal">
-    <h2>SELECT YOUR <span>LEVEL.</span></h2>
-    <p>Choose your access level and activate your next training dimension.</p>
-  </div>
-  <div class="price-grid">
-    <article class="price-card reveal">
-      <div class="plan">LEVEL 01 / START</div>
-      <h3>INITIATE</h3>
-      <div class="amount">$39<small> / month</small></div>
-      <ul><li>Gym access</li><li>Standard equipment</li><li>Fitness assessment</li><li>Member community</li></ul>
-      <a href="#contact" class="btn btn-outline">Activate plan</a>
-    </article>
-    <article class="price-card featured reveal">
-      <div class="plan">LEVEL 02 / POPULAR</div>
-      <h3>EVOLVE</h3>
-      <div class="amount">$69<small> / month</small></div>
-      <ul><li>Everything in Initiate</li><li>Unlimited group classes</li><li>Monthly coaching session</li><li>Recovery zone access</li></ul>
-      <a href="#contact" class="btn btn-primary">Activate plan</a>
-    </article>
-    <article class="price-card reveal">
-      <div class="plan">LEVEL 03 / ELITE</div>
-      <h3>ASCEND</h3>
-      <div class="amount">$99<small> / month</small></div>
-      <ul><li>Everything in Evolve</li><li>Personal training session</li><li>Custom performance plan</li><li>Priority class booking</li></ul>
-      <a href="#contact" class="btn btn-outline">Activate plan</a>
-    </article>
-  </div>
-</section>
+.bonus-dialog{
+  position:relative;
+  width:min(100%,420px);
+  padding:34px 24px 28px;
+  border:2px solid var(--habibi-burgundy);
+  border-radius:10px;
+  background:#fff;
+  text-align:center;
+  color:var(--habibi-text);
+  box-shadow:0 18px 60px rgba(0,0,0,.35);
+  animation:popup-enter .24s ease-out;
+}
 
-<section class="content bmi-area" id="bmi">
-  <div class="reveal">
-    <div class="tag">PERSONAL PERFORMANCE DATA</div>
-    <h2>SCAN YOUR <span>BODY.</span></h2>
-    <p>Calculate your estimated Body Mass Index. This is a general screening measure, not a medical diagnosis or a complete assessment of health or fitness.</p>
-  </div>
-  <div class="calculator reveal">
-    <h3>// BMI SCANNER</h3>
-    <label for="height">HEIGHT / CM</label>
-    <input id="height" type="number" min="1" placeholder="Enter height">
-    <label for="weight">WEIGHT / KG</label>
-    <input id="weight" type="number" min="1" placeholder="Enter weight">
-    <button class="btn btn-primary" onclick="calculateBMI()">START BODY SCAN ↗</button>
-    <div id="result" aria-live="polite"></div>
-  </div>
-</section>
+.bonus-close{
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0;
+  background:transparent;
+  color:var(--habibi-burgundy-dark);
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
 
-<section class="cta" id="contact">
-  <div class="tag">YOUR NEXT EVOLUTION STARTS HERE</div>
-  <h2>ENTER THE <span>NEXUS.</span></h2>
-  <p>Break the routine. Challenge your limits. Experience the future of fitness.</p>
-  <a href="mailto:hello@nexus4d.example" class="btn btn-primary">Connect with us ↗</a>
-</section>
-</main>
+.bonus-dialog h2{
+  margin-bottom:10px;
+  color:var(--habibi-burgundy-dark);
+  font-size:30px;
+}
 
-<footer>
-  <div class="footer-top">
-    <div>
-      <a href="#" class="logo">NEXUS<span>4D.</span></a>
-      <p>Where human potential meets next-generation fitness. Your next dimension starts here.</p>
-    </div>
-    <div class="footer-links">
-      <a href="#programs">Programs</a>
-      <a href="#about">Experience</a>
-      <a href="#membership">Membership</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-  <div class="copyright">© 2026 NEXUS 4D FITNESS. ALL SYSTEMS ACTIVE.</div>
-</footer>
+.bonus-dialog p{
+  margin-bottom:22px;
+  color:#455462;
+  line-height:1.5;
+}
 
-<script>
-const menu = document.getElementById('menu');
-const links = document.getElementById('links');
+.bonus-claim{
+  display:block;
+  padding:14px 18px;
+  border-radius:8px;
+  background:var(--habibi-burgundy);
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  text-decoration:none;
+}
 
-menu.addEventListener('click', () => {
-  links.classList.toggle('open');
-  menu.textContent = links.classList.contains('open') ? '✕' : '☰';
-});
+.bonus-claim:hover{
+  background:var(--habibi-burgundy-dark);
+}
 
-links.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    links.classList.remove('open');
-    menu.textContent = '☰';
-  });
-});
+@keyframes popup-enter{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
 
-function calculateBMI(){
-  const height = Number(document.getElementById('height').value);
-  const weight = Number(document.getElementById('weight').value);
-  const result = document.getElementById('result');
+@media(prefers-reduced-motion:reduce){
+  .bonus-dialog{animation:none}
+}
 
-  if(!height || !weight || height <= 0 || weight <= 0){
-    result.textContent = 'ERROR: Enter valid height and weight.';
-    return;
+@media(max-width:768px){
+  .container{
+    flex-direction:column-reverse;
   }
 
-  const bmi = weight / ((height / 100) ** 2);
-  let category = 'Obesity range';
+  .demo,
+  .right{
+    width:100%;
+  }
 
-  if(bmi < 18.5) category = 'Underweight range';
-  else if(bmi < 25) category = 'Healthy weight range';
-  else if(bmi < 30) category = 'Overweight range';
+  iframe{
+    height:500px;
+  }
 
-  result.textContent = `SCAN COMPLETE: BMI ${bmi.toFixed(1)} — ${category}`;
+  .right{
+    padding:20px;
+  }
 }
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-      observer.unobserve(entry.target);
-    }
-  });
-},{threshold:.12});
+@media(max-width:480px){
+  h1{
+    font-size:28px;
+  }
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  .sub{
+    font-size:16px;
+  }
+
+  .feature{
+    font-size:16px;
+    padding:12px;
+  }
+
+  .signup-btn{
+    font-size:14px;
+    padding:8px 13px;
+  }
+
+  .cta{
+    font-size:18px;
+    padding:15px;
+  }
+
+  .website-row{
+    flex-direction:column;
+    gap:8px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="bonus-popup" id="bonusPopup" role="dialog" aria-modal="true" aria-labelledby="bonusTitle">
+  <div class="bonus-dialog">
+    <button class="bonus-close" id="bonusClose" type="button" aria-label="Close bonus popup">&times;</button>
+    <h2 id="bonusTitle">Bonus Offer</h2>
+    <p>10% Deposit Bonus<br>15% Losing Bonus<br>3% Referral Bonus</p>
+    <a class="bonus-claim" href="https://habibi247.co/clk?src=YMFtLZxvb">Sign Up with Habibi247</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="demo">
+    <a href="https://habibi247.co/clk?src=YMFtLZxvb" target="_blank" rel="noopener noreferrer" class="floating-signup">SIGN UP WITH HABIBI247</a>
+    <iframe src="https://habibi247.co/clk?src=YMFtLZxvb"></iframe>
+  </div>
+
+  <div class="right">
+    <div class="box">
+
+  <div class="badge">HABIBI247</div>
+
+  <h1>Get Your ID Now</h1>
+
+  <p class="sub">
+    Fast auto website service with easy deposit support.
+    New users can start quickly through WhatsApp.
+  </p>
+
+  <div class="features">
+
+    <div class="feature">
+      Minimum Deposit: <span>₹100 Only</span>
+    </div>
+
+    <div class="feature">
+      Welcome Bonus: <span>10%</span>
+    </div>
+
+    <div class="feature">
+      Habibi247 Signup:
+      <a
+        class="signup-btn"
+        href="https://habibi247.co/clk?src=YMFtLZxvb"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Sign Up with Habibi247
+      </a>
+    </div>
+
+    <div class="feature">
+      Quick Help:
+      <span>Deposit &amp; Withdrawal Support</span>
+    </div>
+
+  </div>
+
+  <div class="website-row">
+
+    <a
+      class="website"
+      href="https://habibi247.co/clk?src=YMFtLZxvb"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      🌐 https://habibi247.co/clk?src=YMFtLZxvb
+    </a>
+
+    <a
+      class="whatsapp-small"
+      href="https://wa.me/447873190819"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💬 WhatsApp
+    </a>
+
+  </div>
+
+  <a
+    class="cta"
+    href="https://wa.me/447873190819?text=Hello%20I%20want%20new%20manual%20ID"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    📲 WhatsApp Now
+  </a>
+
+  <p class="trust">
+    ✅ Trusted Manual Support<br>
+    ✅ Simple Process<br>
+    ✅ Fast Response
+  </p>
+
+  <div class="footer">
+    18+ Only | Play Responsibly | Follow Your Local Laws | T&amp;C Apply
+  </div>
+
+</div>
+
+  </div>
+
+</div>
+
+<script>
+const bonusPopup = document.getElementById('bonusPopup');
+const bonusClose = document.getElementById('bonusClose');
+
+function closeBonusPopup(){
+  bonusPopup.hidden = true;
+}
+
+bonusClose.addEventListener('click', closeBonusPopup);
+bonusPopup.addEventListener('click', (event) => {
+  if(event.target === bonusPopup) closeBonusPopup();
+});
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') closeBonusPopup();
+});
 </script>
+
 </body>
 </html>
-```
